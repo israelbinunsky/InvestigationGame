@@ -9,8 +9,8 @@ activate(IranianAgent)
 addSensor(sensor)  
 checkMatch()  
 # flow
-choose semsor
-adding
-check matching
-back to start until the full match
+choose semsor  
+adding  
+check matching  
+back to start until the full match  
 
