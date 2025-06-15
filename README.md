@@ -6,3 +6,6 @@ activate(IranianAgent)
 ### class AudioSensor: sensor
 ### class ThermalSensor: sensor
 ## class game
+addSensor(sensor)  
+checkMatch()  
+
