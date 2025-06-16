@@ -1,9 +1,14 @@
 ﻿public abstract class Sensor
 {
-    public string type;
-    public bool active;
+    public abstract string type { get; }
+    public bool IsActive;
     static public void activate()
     {
 
     }
+}
+
+public class AudioSensor: Sensor
+{
+    public override string type => "audio";
 }

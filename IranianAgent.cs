@@ -17,7 +17,7 @@
 
 public class JuniorAgent: IranianAgent
 {
-    public override string grade => "a";
+    public override string grade => "Junior";
 
     public JuniorAgent(): base(2)
     {
