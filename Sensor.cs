@@ -4,7 +4,9 @@
     public bool active;
     public bool activate(IranianAgent agent)
     {
-        foreach (string a in agent.SuitableSensors)
+        if (agent.WeaknessesDict[this.type] > 0)
+            return true;
+        foreach (string a in agent.Weaknesses)
         {
             if (a == this.type)
             {

@@ -3,7 +3,6 @@
     public int start(IranianAgent agent)
     {
         int cnt = 0;
-        int match = 0;
         for (int i = 0; i < agent.len; i++)
         {
             addSensor(agent, cnt);
