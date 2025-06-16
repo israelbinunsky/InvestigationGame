@@ -12,3 +12,8 @@ public class AudioSensor: Sensor
 {
     public override string type => "audio";
 }
+
+public class ThermalSensor : Sensor
+{
+    public override string type => "thermal";
+}
