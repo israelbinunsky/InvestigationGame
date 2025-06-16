@@ -3,13 +3,19 @@
     public abstract string grade { get; }
     public int len { get; set; }
     public string[] SuitableSensors { get; set; }
+    public Dictionary<string, int> SuitableSensorsDict { get; set; }
     public Sensor[] ConnectedSensors { get; set; }
-    public Dictionary<Sensor, int> ConnectedSensorsDict { get; set; }
+    public Dictionary<string, int> ConnectedSensorsDict { get; set; }
 
     public IranianAgent(int len)
     {
         this.len = len;
         this.SuitableSensors = new string[this.len];
+        this.ConnectedSensors = new Sensor[this.len];
+        this.SuitableSensorsDict = new Dictionary<string, int>();
+        this.ConnectedSensorsDict = new Dictionary<string, int>();
+        this.ConnectedSensorsDict["audio"] = 0;
+        this.ConnectedSensorsDict["thermal"] = 0;
     }
 
     public void createSuitableList()
@@ -18,6 +24,7 @@
         {
             string sensor = RandomSensor();
             this.SuitableSensors[i] = sensor;
+            SuitableSensorsDict[sensor] += 1;
         }
     }
     public string RandomSensor()

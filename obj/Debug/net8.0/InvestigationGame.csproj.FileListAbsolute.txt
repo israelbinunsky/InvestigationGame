@@ -1,0 +1,15 @@
+C:\Users\israel\Desktop\תכנות\visual studio\InvestigationGame\bin\Debug\net8.0\InvestigationGame.exe
+C:\Users\israel\Desktop\תכנות\visual studio\InvestigationGame\bin\Debug\net8.0\InvestigationGame.deps.json
+C:\Users\israel\Desktop\תכנות\visual studio\InvestigationGame\bin\Debug\net8.0\InvestigationGame.runtimeconfig.json
+C:\Users\israel\Desktop\תכנות\visual studio\InvestigationGame\bin\Debug\net8.0\InvestigationGame.dll
+C:\Users\israel\Desktop\תכנות\visual studio\InvestigationGame\bin\Debug\net8.0\InvestigationGame.pdb
+C:\Users\israel\Desktop\תכנות\visual studio\InvestigationGame\obj\Debug\net8.0\InvestigationGame.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\israel\Desktop\תכנות\visual studio\InvestigationGame\obj\Debug\net8.0\InvestigationGame.AssemblyInfoInputs.cache
+C:\Users\israel\Desktop\תכנות\visual studio\InvestigationGame\obj\Debug\net8.0\InvestigationGame.AssemblyInfo.cs
+C:\Users\israel\Desktop\תכנות\visual studio\InvestigationGame\obj\Debug\net8.0\InvestigationGame.csproj.CoreCompileInputs.cache
+C:\Users\israel\Desktop\תכנות\visual studio\InvestigationGame\obj\Debug\net8.0\InvestigationGame.sourcelink.json
+C:\Users\israel\Desktop\תכנות\visual studio\InvestigationGame\obj\Debug\net8.0\InvestigationGame.dll
+C:\Users\israel\Desktop\תכנות\visual studio\InvestigationGame\obj\Debug\net8.0\refint\InvestigationGame.dll
+C:\Users\israel\Desktop\תכנות\visual studio\InvestigationGame\obj\Debug\net8.0\InvestigationGame.pdb
+C:\Users\israel\Desktop\תכנות\visual studio\InvestigationGame\obj\Debug\net8.0\InvestigationGame.genruntimeconfig.cache
+C:\Users\israel\Desktop\תכנות\visual studio\InvestigationGame\obj\Debug\net8.0\ref\InvestigationGame.dll

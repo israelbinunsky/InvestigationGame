@@ -2,9 +2,16 @@
 {
     public abstract string type { get; }
     public bool active;
-    public void activate()
+    public bool activate(IranianAgent agent)
     {
-
+        foreach (string a in agent.SuitableSensors)
+        {
+            if (a == this.type)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }
 
