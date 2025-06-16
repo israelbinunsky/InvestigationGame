@@ -1,9 +1,12 @@
-﻿static class game
+﻿public class game
 {
-   static public void addSensor()
+    public JuniorAgent agent = new JuniorAgent();
+
+    static public void addSensor()
     {
         int choise = int.Parse(Console.ReadLine());
 
     }
+
         
 }
