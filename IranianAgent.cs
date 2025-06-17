@@ -14,29 +14,7 @@
         this.ConnectedSensors = new Sensor[this.len];
         this.WeaknessesDict = new Dictionary<string, int>();
         this.ConnectedSensorsDict = new Dictionary<string, int>();
-        this.WeaknessesDict["audio"] = 0;
-        this.WeaknessesDict["thermal"] = 0;
-        this.ConnectedSensorsDict["audio"] = 0;
-        this.ConnectedSensorsDict["thermal"] = 0;
-    }
-
-    public void createSuitableList()
-    {
-        for (int i = 0; i < this.len; i++)
-        {
-            string sensor = RandomSensor();
-            this.Weaknesses[i] = sensor;
-            WeaknessesDict[sensor] += 1;
-        }
-    }
-    public string RandomSensor()
-    {
-        List<string> sensors = new List<string> { "audio", "thermal" };
-
-        Random rnd = new Random();
-        int index = rnd.Next(sensors.Count);
-        string sensor = sensors[index];
-        return sensor;
+        
     }
 }
 

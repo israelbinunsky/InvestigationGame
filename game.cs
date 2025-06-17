@@ -1,8 +1,23 @@
-﻿ class game
+﻿ public class game
 {
-    public int start(IranianAgent agent)
+    public void start()
+    {
+        JuniorAgent agent = new JuniorAgent();
+        control.createWeaknesses(agent);
+        int result = 0;
+        while (result < agent.len)
+        {
+            Console.WriteLine($"enter {agent.len} numbers:");
+            result = inputSet(agent);
+            Console.WriteLine($"{result} / {agent.len}");
+        }
+    }
+
+    public int inputSet(IranianAgent agent)
     {
         int cnt = 0;
+        Dictionary<string, int> check = new Dictionary<string, int>();
+        control.ResetDict(check);
         for (int i = 0; i < agent.len; i++)
         {
             addSensor(agent, cnt);
@@ -10,16 +25,17 @@
             bool isActive = newSensor.activate(agent);
             if (isActive)
             {
-               if (agent.ConnectedSensorsDict[newSensor.type] > 0)
-                {
-                    cnt++;
-                    agent.ConnectedSensorsDict[newSensor.type]--;
-                }
+                check[newSensor.type] += 1;
             }
+        }
+        foreach (string key in check.Keys)
+        {
+            if (check[key] >= agent.WeaknessesDict[key])
+            { cnt += agent.WeaknessesDict[key]; }
+            else { cnt += check[key]; }
         }
         return cnt;
     }
-
    public void addSensor(IranianAgent agent, int cnt)
     {
         int choise = int.Parse(Console.ReadLine());

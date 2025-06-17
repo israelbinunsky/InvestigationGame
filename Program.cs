@@ -12,8 +12,7 @@ namespace InvestigationGame
         static void Main(string[] args)
         {
             game game = new game();
-            JuniorAgent agent = new JuniorAgent();
-           Console.WriteLine(game.start(agent));
+            game.start();
         }
     }
 }
