@@ -3,7 +3,7 @@
     public static List<string> sensorTypes { get; set; }
      static control()
     {
-        sensorTypes = new List<string> { "audio", "thermal" };
+        sensorTypes = new List<string> { "audio", "thermal", "pulse" };
     }
 
     public static void ResetDict(Dictionary<string, int> dict)
@@ -26,8 +26,16 @@
     public static string RandomSensor()
     {
         Random rnd = new Random();
-        int index = rnd.Next(sensorTypes.Count);
+        int index = rnd.Next(1,sensorTypes.Count);
         string sensor = sensorTypes[index];
         return sensor;
+    }
+
+    public static void showWeaknesses(IranianAgent agent)
+    {
+        foreach (string s in agent.Weaknesses)
+        {
+            Console.WriteLine(s);
+        }
     }
 }

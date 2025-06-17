@@ -11,8 +11,10 @@ namespace InvestigationGame
     {
         static void Main(string[] args)
         {
+            JuniorAgent agent = new JuniorAgent();
+            control.createWeaknesses(agent);
             game game = new game();
-            game.start();
+            game.start(agent);
         }
     }
 }
