@@ -5,7 +5,7 @@
     public string[] Weaknesses { get; set; }
     public Dictionary<string, int> WeaknessesDict { get; set; }
     public Sensor[] ConnectedSensors { get; set; }
-    public Dictionary<string, int> ConnectedSensorsDict { get; set; }
+
 
     public IranianAgent(int len)
     {
@@ -13,8 +13,7 @@
         this.Weaknesses = new string[this.len];
         this.ConnectedSensors = new Sensor[this.len];
         this.WeaknessesDict = new Dictionary<string, int>();
-        this.ConnectedSensorsDict = new Dictionary<string, int>();
-        
+
     }
 }
 

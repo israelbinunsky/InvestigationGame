@@ -16,7 +16,6 @@
     public static void createWeaknesses(IranianAgent agent)
     {
         ResetDict(agent.WeaknessesDict);
-        ResetDict(agent.ConnectedSensorsDict);
         for (int i = 0; i < agent.len; i++)
         {
             string sensor = RandomSensor();
