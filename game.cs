@@ -6,11 +6,16 @@
         if (choise == 3)
         { return; }
         int result = 0;
+        bool PulseActivated3Times = false;
         while (result < agent.len)
         {
             Console.WriteLine($"Enter {agent.len} numbers between 1 and {control.sensorTypes.Count}."); 
             result = inputSet(agent);
             Console.WriteLine($"{result} / {agent.len}");
+            if (control.pulseCnt > PulseSensor.possibleActivations)
+            {
+                Console.WriteLine("Pulse sensor is not count anymore.");
+            }
         }
     }
 
@@ -44,16 +49,19 @@
     public int inputSet(IranianAgent agent)
     {
         int choise = 0;
+        bool pulseChoosed = false;
+        bool isActive = false;
         bool isOutOfRange = false;
         Dictionary<string, int> check = new Dictionary<string, int>();
         control.ResetDict(check);
         for (int i = 0; i < agent.len; i++)
         {
             choise = addSensor(agent, i);
+            if (choise == 3) { pulseChoosed = true; }
             if (choise > 0 && choise <= control.sensorTypes.Count)
             {
                 Sensor newSensor = agent.ConnectedSensors[i];
-                bool isActive = newSensor.activate(agent);
+                isActive = newSensor.activate(agent);
                 if (isActive)
                 {
                     check[newSensor.type] += 1;
@@ -64,11 +72,12 @@
                 isOutOfRange = true;
             }
         }
-        if (isOutOfRange = true)
+        if (isOutOfRange == true)
         {
             Console.WriteLine("one of the numbers is out of range.");
         }
        int result = compere(agent, check);
+       if (pulseChoosed == true) { control.pulseCnt++; }
        return result;
     }
 
@@ -99,6 +108,10 @@
                 agent.ConnectedSensors[cnt] = thermalSensor;
                 break;
             case 3:
+                if (control.pulseCnt > PulseSensor.possibleActivations)
+                {
+                    return 0;
+                }
                 PulseSensor pulseSensor = new PulseSensor();
                 agent.ConnectedSensors[cnt] = pulseSensor;
                 break;

@@ -1,6 +1,7 @@
 ﻿public static class control
 {
     public static List<string> sensorTypes { get; set; }
+    public static int pulseCnt { get; set; } = 0;
      static control()
     {
         sensorTypes = new List<string> { "audio", "thermal", "pulse" };
