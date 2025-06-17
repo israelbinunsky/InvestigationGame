@@ -5,7 +5,7 @@
     {
         if (agent.WeaknessesDict[this.type] > 0)
             return true;
-        foreach (string a in agent.Weaknesses)
+        foreach (string a in agent.WeaknessesDict.Keys)
         {
             if (a == this.type)
             {

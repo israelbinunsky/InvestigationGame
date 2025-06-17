@@ -20,7 +20,6 @@
         for (int i = 0; i < agent.len; i++)
         {
             string sensor = RandomSensor();
-            agent.Weaknesses[i] = sensor;
             agent.WeaknessesDict[sensor] += 1;
         }
     }
@@ -34,7 +33,7 @@
 
     public static void showWeaknesses(IranianAgent agent)
     {
-        foreach (string s in agent.Weaknesses)
+        foreach (string s in agent.WeaknessesDict.Keys)
         {
             Console.WriteLine(s);
         }

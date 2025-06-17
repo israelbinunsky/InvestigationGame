@@ -2,16 +2,16 @@
 {
     public void start(IranianAgent agent)
     {
+        Console.WriteLine("Welcome to Investigation Game!");
         int choise = menue(agent);
         if (choise == 3)
         { return; }
-        int result = 0;
-        bool PulseActivated3Times = false;
-        while (result < agent.len)
+        int correctResult = 0;
+        while (correctResult < agent.len)
         {
-            Console.WriteLine($"Enter {agent.len} numbers between 1 and {control.sensorTypes.Count}."); 
-            result = inputSet(agent);
-            Console.WriteLine($"{result} / {agent.len}");
+            Console.WriteLine($"Enter {agent.len} numbers between 1 and {control.sensorTypes.Count}.");
+            correctResult = inputSet(agent);
+            Console.WriteLine($"{correctResult} / {agent.len}");
             if (control.pulseCnt > PulseSensor.possibleActivations)
             {
                 Console.WriteLine("Pulse sensor is not count anymore.");
@@ -21,9 +21,9 @@
 
     public int menue(IranianAgent agent)
     {
-        Console.WriteLine("Welcome to Investigation Game!");
+        
         Console.WriteLine("to show optinal sensors enter 1.");
-        Console.WriteLine("to start enter 2.");
+        Console.WriteLine("to start the game enter 2.");
         Console.WriteLine("to exit enter 3.");
         int choise = int.Parse(Console.ReadLine());
         while (choise > 0)
@@ -35,12 +35,16 @@
                     {
                         Console.WriteLine($"{control.sensorTypes[i]}: number {i + 1}.");
                     }
-                    Console.WriteLine("to start enter 2.");
-                    Console.WriteLine("to exit enter 3.");
-                    choise = int.Parse(Console.ReadLine());
+                    choise = menue(agent);
                     break;
+                case 2:
+                    return choise;
+                case 3:
+                    return choise;
                 default:
-                    return choise;               
+                    Console.WriteLine("invalid choise.");
+                    choise = menue(agent);
+                    break;
             }
         }
         return choise;
@@ -76,8 +80,8 @@
         {
             Console.WriteLine("one of the numbers is out of range.");
         }
-       int result = compere(agent, check);
-       if (pulseChoosed == true) { control.pulseCnt++; }
+        if (pulseChoosed == true) { control.pulseCnt++; }
+        int result = compere(agent, check);
        return result;
     }
 
