@@ -7,6 +7,18 @@
         sensorTypes = new List<string> { "audio", "thermal", "pulse" };
     }
 
+    public static Type GetSensorType(string name)
+    {
+        if (name == "audio")
+            return typeof(AudioSensor);
+        else if (name == "thermal")
+            return typeof(ThermalSensor);
+        else if (name == "pulse")
+            return typeof(PulseSensor);
+        else
+            return null;
+    }
+
     public static void ResetDict(Dictionary<string, int> dict)
     {
         foreach (string type in sensorTypes)

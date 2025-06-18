@@ -58,14 +58,14 @@
     }
 
 
-    public static int compere(IranianAgent agent, Dictionary<string, int> check)
+    public static int compere(IranianAgent agent)
     {
         int cnt = 0;
-        foreach (string key in check.Keys)
+        foreach (string key in agent.check.Keys)
         {
-            if (check[key] >= agent.WeaknessesDict[key])
+            if (agent.check[key] >= agent.WeaknessesDict[key])
             { cnt += agent.WeaknessesDict[key]; }
-            else { cnt += check[key]; }
+            else { cnt += agent.check[key]; }
         }
         return cnt;
     }

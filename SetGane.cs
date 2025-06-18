@@ -20,9 +20,8 @@
         int choise = 0;
         bool pulseChoosed = false;
         bool isActive = false;
-        bool isOutOfRange = false;
-        Dictionary<string, int> check = new Dictionary<string, int>();
-        control.ResetDict(check);
+        bool isOutOfRange = false;  
+        control.ResetDict(agent.check);
         for (int i = 0; i < agent.len; i++)
         {
             choise = addSensor(agent, i);
@@ -33,10 +32,10 @@
                 isActive = newSensor.activate(agent);
                 if (isActive)
                 {
-                    check[newSensor.type] += 1;
+                    agent.check[newSensor.type] += 1;
                 }
             }
-            else if (choise != -1)
+            else if (PulseSensor.pulseCnt <= PulseSensor.possibleActivations)
             {
                 isOutOfRange = true;
             }
@@ -46,7 +45,7 @@
             Console.WriteLine("one of the numbers is out of range.");
         }
         if (pulseChoosed == true) { PulseSensor.pulseCnt++; }
-        int result = game.compere(agent, check);
+        int result = game.compere(agent);
         return result;
     }
 
@@ -60,28 +59,39 @@
             Console.WriteLine("Invalid input. Please enter a number.");
             return 0;
         }
-
-        switch (choise)
+        if (choise == 3 && PulseSensor.pulseCnt > PulseSensor.possibleActivations)
         {
-            case 1:
-                AudioSensor audioSensor = new AudioSensor();
-                agent.ConnectedSensors[cnt] = audioSensor;
-                break;
-            case 2:
-                ThermalSensor thermalSensor = new ThermalSensor();
-                agent.ConnectedSensors[cnt] = thermalSensor;
-                break;
-            case 3:
-                if (PulseSensor.pulseCnt > PulseSensor.possibleActivations)
-                {
-                    return -1;
-                }
-                PulseSensor pulseSensor = new PulseSensor();
-                agent.ConnectedSensors[cnt] = pulseSensor;
-                break;
-            default:
-                break;
+            return -1;
         }
+        if (choise < 1 || choise > control.sensorTypes.Count)
+        {
+            return choise;
+        }
+        string name = control.sensorTypes[choise - 1];
+        Type type = control.GetSensorType(name);
+        Sensor instance = (Sensor)Activator.CreateInstance(type);
+        agent.ConnectedSensors[cnt] = instance;
+        //switch (choise)
+        //{
+        //    case 1:
+        //        AudioSensor audioSensor = new AudioSensor();
+        //        agent.ConnectedSensors[cnt] = audioSensor;
+        //        break;
+        //    case 2:
+        //        ThermalSensor thermalSensor = new ThermalSensor();
+        //        agent.ConnectedSensors[cnt] = thermalSensor;
+        //        break;
+        //    case 3:
+        //        if (PulseSensor.pulseCnt > PulseSensor.possibleActivations)
+        //        {
+        //            return -1;
+        //        }
+        //        PulseSensor pulseSensor = new PulseSensor();
+        //        agent.ConnectedSensors[cnt] = pulseSensor;
+        //        break;
+        //    default:
+        //        break;
+        //}
 
         return choise;
     }
