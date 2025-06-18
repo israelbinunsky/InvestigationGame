@@ -13,7 +13,6 @@ namespace InvestigationGame
         {
             JuniorAgent agent = new JuniorAgent();
             control.createWeaknesses(agent);
-            game game = new game();
             game.start(agent);
         }
     }
