@@ -4,13 +4,15 @@
     public int len { get; set; }
     public Dictionary<string, int> WeaknessesDict { get; set; }
     public Sensor[] ConnectedSensors { get; set; }
+    public List<Sensor> ConnectedSensorsList { get; set; }
 
 
     public IranianAgent(int len)
     {
         this.len = len;
-        this.ConnectedSensors = new Sensor[this.len];
         this.WeaknessesDict = new Dictionary<string, int>();
+        this.ConnectedSensors = new Sensor[this.len];
+        this.ConnectedSensorsList = new List<Sensor>();
 
     }
 }

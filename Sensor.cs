@@ -30,6 +30,7 @@ public class PulseSensor : Sensor
 {
     public override string type => "pulse";
     public static int possibleActivations;
+    public static int pulseCnt { get; set; } = 0;
     public PulseSensor()
     {
         possibleActivations = 3;
