@@ -11,9 +11,7 @@ namespace InvestigationGame
     {
         static void Main(string[] args)
         {
-            IranianAgent agent = new SquadLeader();
-            control.createWeaknesses(agent);
-            game.start(agent);
+            game.start();
         }
     }
 }

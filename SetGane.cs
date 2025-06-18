@@ -71,28 +71,6 @@
         Type type = control.GetSensorType(name);
         Sensor instance = (Sensor)Activator.CreateInstance(type);
         agent.ConnectedSensors[cnt] = instance;
-        //switch (choise)
-        //{
-        //    case 1:
-        //        AudioSensor audioSensor = new AudioSensor();
-        //        agent.ConnectedSensors[cnt] = audioSensor;
-        //        break;
-        //    case 2:
-        //        ThermalSensor thermalSensor = new ThermalSensor();
-        //        agent.ConnectedSensors[cnt] = thermalSensor;
-        //        break;
-        //    case 3:
-        //        if (PulseSensor.pulseCnt > PulseSensor.possibleActivations)
-        //        {
-        //            return -1;
-        //        }
-        //        PulseSensor pulseSensor = new PulseSensor();
-        //        agent.ConnectedSensors[cnt] = pulseSensor;
-        //        break;
-        //    default:
-        //        break;
-        //}
-
         return choise;
     }
 }

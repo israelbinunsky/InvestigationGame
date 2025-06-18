@@ -1,12 +1,16 @@
-﻿public static class control
+﻿using System.ComponentModel.Design;
+using static System.Net.Mime.MediaTypeNames;
+
+public static class control
 {
     public static List<string> sensorTypes { get; set; }
+    public static List<string> agentTypes { get; set; }
     public static int pulseCnt { get; set; } = 0;
      static control()
     {
         sensorTypes = new List<string> { "audio", "thermal", "pulse", "motion" };
+        agentTypes = new List<string> { "Foot Soldier", "Squad Leader", "Senior Commander", "Organization Leader" };
     }
-
     public static Type GetSensorType(string name)
     {
         switch (name)
@@ -19,6 +23,22 @@
                 return typeof(PulseSensor);
             case "motion":
                 return typeof(MotionSensor);
+            default:
+                return null;
+        }
+    }
+    public static Type GetAgentType(string name)
+    {
+        switch (name)
+        {
+            case "Foot Soldier":
+                return typeof(FootSoldier);
+            case "Squad Leader":
+                return typeof(SquadLeader);
+            case "Senior Commander":
+                return typeof(SeniorCommander);
+            case "Organization Leader":
+                return typeof(OrganizationLeader);
             default:
                 return null;
         }

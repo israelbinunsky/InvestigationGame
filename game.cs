@@ -1,12 +1,12 @@
 ﻿ public static class game
 {
-    public static void start(IranianAgent agent)
+    public static void start()
     {
         Console.WriteLine("Welcome to Investigation Game!");
-        menue(agent);
+        menue();
     }
 
-    public static void menue(IranianAgent agent)
+    public static void menue()
     {
         
         Console.WriteLine("to show optinal sensors enter 1.");
@@ -21,16 +21,18 @@
                 {
                     Console.WriteLine($"{control.sensorTypes[i]}: number {i + 1}.");
                 }
-                menue(agent);
+                menue();
                 break;
             case 2:
+                IranianAgent agent = agentMenue();
+                control.createWeaknesses(agent);
                 gameMenue(agent);
                 break;
             case 3:
                 break;
             default:
                 Console.WriteLine("invalid choise.");
-                menue(agent);
+                menue();
                 break;
             
         }
@@ -56,6 +58,18 @@
         }
     }
 
+    public static IranianAgent agentMenue()
+    {
+       for (int i = 0; i < control.agentTypes.Count; i++)
+        {
+            Console.WriteLine($"to choose {control.agentTypes[i]} enter {i+1}.");
+        }
+        int choise = int.Parse(Console.ReadLine());
+        string name = control.agentTypes[choise - 1];
+        Type type = control.GetAgentType(name);
+        IranianAgent agent = (IranianAgent)Activator.CreateInstance(type);
+        return agent;
+    }
 
     public static int compere(IranianAgent agent)
     {
@@ -68,8 +82,4 @@
         }
         return cnt;
     }
-
- 
-    
-
 }

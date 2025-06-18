@@ -54,7 +54,7 @@ public class SeniorCommander: IranianAgent
 
 public class OrganizationLeader: IranianAgent
 {
-    public override string type => "Organization Leader ";
+    public override string type => "Organization Leader";
     public OrganizationLeader() : base(8)
     {
         attackAfter = 6;
