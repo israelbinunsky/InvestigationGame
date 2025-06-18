@@ -36,3 +36,14 @@ public class PulseSensor : Sensor
         possibleActivations = 3;
     }
 }
+
+public class MotionSensor: Sensor
+{
+    public override string type => "motion";
+
+    public static int pulseCnt { get; set; } = 0;
+    public MotionSensor()
+    {
+
+    }
+}

@@ -4,19 +4,24 @@
     public static int pulseCnt { get; set; } = 0;
      static control()
     {
-        sensorTypes = new List<string> { "audio", "thermal", "pulse" };
+        sensorTypes = new List<string> { "audio", "thermal", "pulse", "motion" };
     }
 
     public static Type GetSensorType(string name)
     {
-        if (name == "audio")
-            return typeof(AudioSensor);
-        else if (name == "thermal")
-            return typeof(ThermalSensor);
-        else if (name == "pulse")
-            return typeof(PulseSensor);
-        else
-            return null;
+        switch (name)
+        {
+            case "audio":
+                return typeof(AudioSensor);
+            case "thermal":
+                return typeof(ThermalSensor);
+            case "pulse":
+                return typeof(PulseSensor);
+            case "motion":
+                return typeof(MotionSensor);
+            default:
+                return null;
+        }
     }
 
     public static void ResetDict(Dictionary<string, int> dict)
@@ -48,6 +53,22 @@
         foreach (string s in agent.WeaknessesDict.Keys)
         {
             Console.WriteLine(s);
+        }
+    }
+    public static void RemoveSensor(IranianAgent agent)
+    {
+        bool removed = false;
+        while (removed == false)
+        {
+            Random rnd = new Random();
+            int num = rnd.Next(1, control.sensorTypes.Count);
+            string type = control.sensorTypes[num];
+            if (agent.check[type] > 0 && agent.WeaknessesDict[type] > 0)
+            {
+                agent.check[type]--;
+                removed = true;
+                Console.WriteLine($"the Squad Leader removed {agent.numOfAttacks} sensor.");
+            }
         }
     }
 }

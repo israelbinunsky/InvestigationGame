@@ -8,13 +8,14 @@
         control.ResetDict(agent.check);
         while (correctResult < agent.len)
         {
+            if (agent.activations > 0 && agent.activations % 10 == 0)
+            {
+                control.ResetDict(agent.check);
+            }
             Console.WriteLine($"Enter number between 1 and {control.sensorTypes.Count}.");
             correctResult = inputOne(agent);
             prvResult = correctResult;
-            if (agent.type == "Squad Leader")
-            {
-                SquadLeader.activations++;
-            }
+            agent.activations++;
             Console.WriteLine($"{correctResult} / {agent.len}");
             if (PulseSensor.pulseCnt > PulseSensor.possibleActivations)
             {
@@ -76,10 +77,17 @@
         int result = 0;
         int choise = 0;
         bool isActive = false;
-        if (agent.type == "Squad Leader" && SquadLeader.activations > 0 && SquadLeader.activations % SquadLeader.attackAfter == 0)
+        if (agent.type != "Foot Soldier")
         {
-            SquadLeader.RemoveSensor(agent.WeaknessesDict, agent.check);
+            if (agent.activations > 0 && agent.activations % agent.attackAfter == 0)
+            {
+                for (int i = 0; i < agent.numOfAttacks; i++)
+                {
+                    control.RemoveSensor(agent);
+                }
+            }
         }
+ 
         choise = addSensorToList(agent);
         if (choise == 3) { PulseSensor.pulseCnt++; }
         if (choise > 0 && choise <= control.sensorTypes.Count)

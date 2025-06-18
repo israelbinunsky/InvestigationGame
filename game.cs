@@ -53,7 +53,6 @@
                 Console.WriteLine("invalid choise.");
                 gameMenue(agent);
                 break;
-
         }
     }
 
